@@ -1,0 +1,6 @@
+@TredaApi_HostAddress = http://localhost:5271
+
+GET {{TredaApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
