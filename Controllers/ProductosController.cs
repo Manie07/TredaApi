@@ -11,9 +11,11 @@ namespace TredaApi.Controllers
         private readonly IProductoRepository _repo;
         public ProductosController(IProductoRepository repo) => _repo = repo;
 
+        //Obtiene todos los productos
         [HttpGet]
         public async Task<IActionResult> Get() => Ok(await _repo.GetAll());
 
+        //Obtiene un producto por su ID
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -21,6 +23,7 @@ namespace TredaApi.Controllers
             return prod == null ? NotFound() : Ok(prod);
         }
 
+        //Busca productos por nombre y/o rango de precio
         [HttpGet("search")]
         public async Task<IActionResult> Search([FromQuery] string? nombre, [FromQuery] decimal? precioMin, [FromQuery] decimal? precioMax)
         {
@@ -28,7 +31,7 @@ namespace TredaApi.Controllers
             return Ok(productos);
         }
 
-
+        //Crea un nuevo producto
         [HttpPost]
         public async Task<IActionResult> Post(Producto producto)
         {
@@ -36,6 +39,7 @@ namespace TredaApi.Controllers
             return CreatedAtAction(nameof(Get), new { id = producto.Id }, producto);
         }
 
+        //Actualiza un producto existente
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, Producto producto)
         {
@@ -44,6 +48,7 @@ namespace TredaApi.Controllers
             return NoContent();
         }
 
+        //Elimina un producto por su ID
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
