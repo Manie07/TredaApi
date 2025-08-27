@@ -84,7 +84,7 @@ Incluye operaciones **CRUD (Create, Read, Update, Delete)** y soporta **búsqued
 
 📚 Tecnologías utilizadas
 
-- ASP.NET Core 7
+- ASP.NET Core 8
 - Entity Framework Core
 - SQL Server
 - LINQ
