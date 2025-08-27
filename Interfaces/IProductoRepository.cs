@@ -9,5 +9,7 @@ namespace TredaApi.Interfaces
         Task Add(Producto producto);
         Task Update(Producto producto);
         Task Delete(int id);
+        Task<IEnumerable<Producto>> Search(string? nombre = null, decimal? precioMin = null, decimal? precioMax = null);
+
     }
 }

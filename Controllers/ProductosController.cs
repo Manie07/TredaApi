@@ -21,6 +21,14 @@ namespace TredaApi.Controllers
             return prod == null ? NotFound() : Ok(prod);
         }
 
+        [HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] string? nombre, [FromQuery] decimal? precioMin, [FromQuery] decimal? precioMax)
+        {
+            var productos = await _repo.Search(nombre, precioMin, precioMax);
+            return Ok(productos);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Post(Producto producto)
         {
